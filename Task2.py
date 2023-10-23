@@ -6,19 +6,28 @@ requirements:
 - check for valid inputs 
 """
 
+import re
+
 #things to do
 #validate user input
 #generate target number
 #allow user to guess 
 #compare guess with target number
 def valid_input():
-    x = int(input())
-    if x > 1 and x < 100:
-        print("yay") #assuming that 1 and 100 are not included since "between"
-        return x
+    guess = input()
+    if re.search(r"\d+", guess):
+        guess = int(guess)
+        if guess > 1 and guess < 100:
+            print("yay") #assuming that 1 and 100 are not included since "between"
+            return guess
+        else: 
+            print("please input an integer between 1 and 100")
+            return valid_input()
     else: 
-        print("please input an integer between 1 and 100")
-        valid_input()
+        print("please input an integer")
+        return valid_input()
     
 
+
+"""running code & testcases"""
 valid_input()
