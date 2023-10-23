@@ -7,20 +7,18 @@ requirements:
 """
 
 #things to do
-
+#validate user input
 #generate target number
 #allow user to guess 
 #compare guess with target number
-
-print('hello1')
-input()
 def valid_input():
-    x = input()
-    if x > 1 and x < 100: #assuming that 1 and 100 are not included since "between"
-        pass
+    x = int(input())
+    if x > 1 and x < 100:
+        print("yay") #assuming that 1 and 100 are not included since "between"
+        return x
     else: 
-        raise KeyError
-    print("hello2")
+        print("please input an integer between 1 and 100")
+        valid_input()
+    
 
 valid_input()
-print('hello3')
