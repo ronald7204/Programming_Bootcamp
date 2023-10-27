@@ -11,25 +11,31 @@ requirements for code:
 - some examples or test cases demonstrating that it works.
 - avoid global variables 
 - code should be simple and intuitive
+
+
+intuition -> example: [8,1,3,4] list can be concatenated by adding 8000+100+30+4 -> which would result in 8134
+this can be achieved by multiplying each element by 10 to a power relative to its position, and adding it all up using a variable.
 """
+
+
+
 
 
 def concatenator(input):
     temp = 0 #creating a variable to concatenate a list into 
-    power = len(input) - 1
-    if len(input) > 0:
-        for i in input: 
-            temp += i*(10**power)
-            power -= 1
-        print(temp)
-    else: 
-        print("input list is empty")
+    power = len(input) - 1 #the minus 1 ensures that when the element is multiplied by 10 and the power isn't too high, for example #[8,1,3,4] would result in 81340 without the minus 1
+    if len(input) > 0: # to make sure that the input is not empty
+        for i in input: #acesses each element in the list from left to right
+            temp += i*(10**power) #multiplies accessed element with 10 to a power (which is relative to the elements position in the list) and assigns the value to a variable
+            power -= 1 #reduces the power by 1 to account for moving onto the next element in the list
+        return temp
+    
 
 ex1 = []
 ex2 = [1,2,3,4,5,67,77,9]
 ex3 = [6,5,4]
 ex4 = [1,3,4]
-concatenator(ex1)
-concatenator(ex2)
-concatenator(ex3)
-concatenator(ex4)
+print(concatenator(ex1)) #--> return none because there are no elements to concatenate in the input list
+print(concatenator(ex2))
+print(concatenator(ex3))
+print(concatenator(ex4))
